@@ -3,4 +3,14 @@ services:
   -docker
 
 script:
-  - docker build -t react-app .
+  - docker build -t exing1984/react-example2 .
+  - docker images exing1984/react-example2
+
+before_deloy:
+  - docker login -u exing1984 -p c8h10n402
+
+deploy:
+  provider: script
+  script: docker push exing1984/react-example2
+  on: 
+    branch: master
